@@ -14,6 +14,7 @@ enum Currencies {
   euro,
   rub,
 }
+const group_id = process.env.GROUP_ID || '-567259948';
 
 // console.log(BOT_TOKEN);
 
@@ -58,9 +59,7 @@ async function getRate() {
   }
 }
 
-cron.schedule("00 00 09 * * * ", async () => {
-  console.log("Start ");
-  
+cron.schedule("00 00 09 * * * ", async () => {  
   const { prices, diffPercent } = await getRate();
     const res = `
   1.💵 USD: ${prices.usd} 
@@ -71,7 +70,7 @@ cron.schedule("00 00 09 * * * ", async () => {
       Diff(${diffPercent.rub})
       `;
 
-  bot.telegram.sendMessage(process.env.GROUP_ID, `<code>${res}</code>`, { parse_mode: 'HTML' });
+  bot.telegram.sendMessage(group_id, `<code>${res}</code>`, { parse_mode: 'HTML' });
 
 });
 
