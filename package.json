@@ -9,6 +9,9 @@
     "start:dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
     "build": "rimraf ./build && tsc"
   },
+  "engines": {
+    "node": "14.18.1"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
